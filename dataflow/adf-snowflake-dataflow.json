@@ -1,0 +1,92 @@
+{
+	"name": "adf-snowflake-dataflow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "carsalesdata",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "tbl_aus_vehicle_data",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "surrogateKey1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Brand as string,",
+				"          Year as integer,",
+				"          Model as string,",
+				"          {Car/Suv} as string,",
+				"          Title as string,",
+				"          UsedOrNew as string,",
+				"          Transmission as string,",
+				"          Engine as string,",
+				"          DriveType as string,",
+				"          FuelType as string,",
+				"          FuelConsumption as string,",
+				"          Kilometres as integer,",
+				"          ColourExtInt as string,",
+				"          Location as string,",
+				"          CylindersinEngine as string,",
+				"          BodyType as string,",
+				"          Doors as string,",
+				"          Seats as string,",
+				"          Price as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 keyGenerate(output(Id as long),",
+				"     startAt: 1L,",
+				"     stepValue: 1L) ~> surrogateKey1",
+				"surrogateKey1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          ID as decimal(38,0),",
+				"          BRAND as string,",
+				"          YEAR as decimal(38,0),",
+				"          MODEL as string,",
+				"          CAR as string,",
+				"          TITLE as string,",
+				"          USEDORNEW as string,",
+				"          TRANSMISSION as string,",
+				"          ENGINE as string,",
+				"          DRIVETYPE as string,",
+				"          FUELTYPE as string,",
+				"          FUELCONSUMPTION as string,",
+				"          KILOMETERS as decimal(38,0),",
+				"          COLOUREXTINT as string,",
+				"          LOCATION as string,",
+				"          CYLINDERSINENGINE as string,",
+				"          BODYTYPE as string,",
+				"          DOORS as string,",
+				"          SEATS as string,",
+				"          PRICE as decimal(38,0)",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     stageInsert: true) ~> sink1"
+			]
+		}
+	}
+}

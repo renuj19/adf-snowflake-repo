@@ -1,0 +1,9 @@
+{
+	"name": "carsalesdemo-adf",
+	"location": "australiaeast",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "c088d197-2cfb-42a2-8a4a-bc8a4f00e3d9",
+		"tenantId": "42268695-f2a5-4175-8f16-386de75b68e0"
+	}
+}

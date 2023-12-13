@@ -1,0 +1,101 @@
+{
+	"name": "carsalesdata",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Australian Vehicle Prices.csv",
+				"container": "stage"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Brand",
+				"type": "String"
+			},
+			{
+				"name": "Year",
+				"type": "String"
+			},
+			{
+				"name": "Model",
+				"type": "String"
+			},
+			{
+				"name": "Car/Suv",
+				"type": "String"
+			},
+			{
+				"name": "Title",
+				"type": "String"
+			},
+			{
+				"name": "UsedOrNew",
+				"type": "String"
+			},
+			{
+				"name": "Transmission",
+				"type": "String"
+			},
+			{
+				"name": "Engine",
+				"type": "String"
+			},
+			{
+				"name": "DriveType",
+				"type": "String"
+			},
+			{
+				"name": "FuelType",
+				"type": "String"
+			},
+			{
+				"name": "FuelConsumption",
+				"type": "String"
+			},
+			{
+				"name": "Kilometres",
+				"type": "String"
+			},
+			{
+				"name": "ColourExtInt",
+				"type": "String"
+			},
+			{
+				"name": "Location",
+				"type": "String"
+			},
+			{
+				"name": "CylindersinEngine",
+				"type": "String"
+			},
+			{
+				"name": "BodyType",
+				"type": "String"
+			},
+			{
+				"name": "Doors",
+				"type": "String"
+			},
+			{
+				"name": "Seats",
+				"type": "String"
+			},
+			{
+				"name": "Price",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
